@@ -1,7 +1,7 @@
 -module(learn010).
 
--export([foldr/2]).
+-export([foldr/3]).
 
-foldr(F, [X,Y]) -> F(X,Y);
-foldr(F, [H|T]) ->
-	F(H, foldr(F, T)).
+foldr(F, Acc, [X]) -> F(X,Acc);
+foldr(F, Acc, [H|T]) ->
+	F(H, foldr(F, Acc, T)).
