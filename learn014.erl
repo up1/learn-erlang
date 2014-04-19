@@ -8,6 +8,7 @@ server(Clients) ->
 			NewClients = [Client | Clients],
 			Client ! {connected, self()},
 			server(NewClients);
+
 		{message, Message} ->
 			io:format("Server receive : ~s~n", [Message]),
 			lists:foreach(
@@ -25,9 +26,11 @@ client(Server) ->
 		{notify, Messsage} ->
 			io:format("Receive : ~s~n", [Messsage]),
 			client(Server);
+
 		{connected, ServerPID} ->
 			io:format("connected to server : ~p~n", [ServerPID]),
 			client(ServerPID);
+			
 		{broadcast, Messsage} ->
 			Server ! {message, Messsage},
 			client(Server)
