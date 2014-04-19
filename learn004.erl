@@ -1,6 +1,6 @@
 -module(learn004).
 
--export[sum/1, count/1, average/1].
+-export[average/1].
 
 sum([]) -> 0;
 sum([H|T]) ->
