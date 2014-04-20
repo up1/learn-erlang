@@ -16,7 +16,7 @@ loop2() ->
 	receive
 		{link, PID} ->
 			link(PID),
-			loop();
+			loop2();
 		die -> 
 			exit("DIE 2");
 		ExitMessage ->
